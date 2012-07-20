@@ -6,7 +6,6 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
-import ua.com.springbyexample.validation.OnlyValidForJson;
 import ua.com.springbyexample.validation.domain.CouponJson;
 import ua.com.springbyexample.validation.service.CouponsService;
 
@@ -25,7 +24,6 @@ public class CouponsGenerationController {
     @RequestMapping(value = "/generate", method = RequestMethod.POST, params = "couponType=DISCOUNT_COUPON",
             consumes = "application/json", produces = "application/json")
     @ResponseBody
-    @OnlyValidForJson
     public Collection<CouponJson> generateDiscountCoupons(@Valid @RequestBody DiscountCouponGenerationCommand command) {
         return couponsService.generateDiscountCoupons(command.getDiscount(), command.getCouponsCount(), command.getCouponCode());
     }
