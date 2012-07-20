@@ -21,8 +21,7 @@ public class CouponsGenerationController {
     @Resource
     private CouponsService couponsService;
 
-    @RequestMapping(value = "/generate", method = RequestMethod.POST, params = "couponType=DISCOUNT_COUPON",
-            consumes = "application/json", produces = "application/json")
+    @RequestMapping(value = "/generate", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     @ResponseBody
     public Collection<CouponJson> generateDiscountCoupons(@Valid @RequestBody DiscountCouponGenerationCommand command) {
         return couponsService.generateDiscountCoupons(command.getDiscount(), command.getCouponsCount(), command.getCouponCode());
